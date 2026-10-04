@@ -65,17 +65,17 @@ Starts an ephemeral container, optionally copies project files into it, runs a c
 
 ## Installation
 
-### Method 1 — Direct Installation (Recommended)
+### Method 1 ï¿½ Direct Installation (Recommended)
 
 Install the package globally from npm:
 
 ```bash
-npm install -g @shivam8999/docker-env-mcp
+npm install -g @shivam8999/docker-env-mcp@latest
 ```
 
 Once installed, configure your MCP client to use the server (see [MCP Client Configuration](#mcp-client-configuration-example) below).
 
-### Method 2 — Build from Source
+### Method 2 ï¿½ Build from Source
 
 Clone the repository and build it yourself:
 
