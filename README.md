@@ -59,27 +59,53 @@ Starts an ephemeral container, optionally copies project files into it, runs a c
 ## Requirements
 
 * **Node.js 24** (enforced at runtime, in `package.json` engines, and npm scripts).
-* **Docker Engine / Docker Desktop** running.
+* **Docker Engine / Docker Desktop** must be installed and running on your machine. You can download it from [docker.com](https://www.docker.com/products/docker-desktop/).
 
 ---
 
-## Installation & Scripts
+## Installation
+
+### Method 1 — Direct Installation (Recommended)
+
+Install the package globally from npm:
 
 ```bash
-# Install dependencies
+npm install -g @shivam8999/docker-env-mcp
+```
+
+Once installed, configure your MCP client to use the server (see [MCP Client Configuration](#mcp-client-configuration-example) below).
+
+### Method 2 — Build from Source
+
+Clone the repository and build it yourself:
+
+```bash
+git clone https://github.com/Shivam8999/docker-env-mcp.git
+cd docker-env-mcp
 npm install
-
-# Run unit tests
-npm test
-
-# Build TypeScript to dist/
 npm run build
+```
 
-# Start MCP Server on stdio
-npm start
+Then point your MCP client to the local build:
 
-# Run in development mode with tsx
-npm run dev
+```json
+{
+  "mcpServers": {
+    "docker-env": {
+      "command": "node",
+      "args": ["/path/to/docker-env-mcp/dist/index.js"]
+    }
+  }
+}
+```
+
+#### Available Scripts
+
+```bash
+npm run build    # Build TypeScript to dist/
+npm start        # Start MCP Server on stdio
+npm run dev      # Run in development mode with tsx
+npm test         # Run unit tests
 ```
 
 ---
@@ -92,8 +118,8 @@ To use this server in Claude Desktop, Cursor, or Antigravity MCP settings:
 {
   "mcpServers": {
     "docker-env": {
-      "command": "node",
-      "args": ["S:/mcp-builds/docker-env-server/dist/index.js"]
+      "command": "npx",
+      "args": ["-y", "@shivam8999/docker-env-mcp"]
     }
   }
 }
